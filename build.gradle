@@ -14,7 +14,13 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    runtimeOnly 'com.h2database:h2:1.4.192' // 1.4.200 최신버전은 제대로 동작하지 않음 https://github.com/h2database/h2database/issues/2900
+
+    // embedded database 를 초기화 할때 schema.sql, data.sql을 통해 초기화 하고 싶다면 starter-jdbc가 필요
+    // EmbeddedDatabaseBuilder.class 참조할 것
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+
+    // 1.4.200 최신버전은 제대로 동작하지 않음 https://github.com/h2database/h2database/issues/2900
+    runtimeOnly 'com.h2database:h2:1.4.192'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
